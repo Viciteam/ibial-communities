@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group([
+/*Route::group([
     'prefix' => 'community',
 ], function () {
     Route::post("add", 'CommunityController@createCommunity');
@@ -28,4 +28,17 @@ Route::group([
     Route::put("update/{id}/community-profile", 'CommunityController@updateCommunityProfile');
     Route::post("update/community-profile-pic", 'CommunityController@updateCommunityProfilePic');
     Route::post("update/community-cover-photo", 'CommunityController@updateCommunityCoverPhoto');
+
+});*/
+Route::group([
+    'prefix' => 'business',
+], function () {
+    Route::post("/add", 'BusinessController@createBusiness');
+    Route::get("/{id}", 'BusinessController@getBusinessDetails');
+    Route::put("update/{id}/business-privacy", 'BusinessController@updateBusinessPrivacy');
+    Route::put("update/{id}/business-views", 'BusinessController@updateBusinessViews');
+    Route::put("update/{id}/business-profile", 'BusinessController@updateBusinessProfile');
+    Route::post("update/business-profile-pic", 'BusinessController@updateBusinessProfilePic');
+    Route::post("update/business-cover-photo", 'BusinessController@updateBusinessCoverPhoto');
+
 });
