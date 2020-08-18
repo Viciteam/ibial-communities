@@ -40,6 +40,7 @@ class Community extends Model
         $exists = Community::select('*')
             ->where('name','=',$data->get('name'))
             ->exists();
+
         if($exists){
             $res = array(
                 'community_details' => "",

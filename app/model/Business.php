@@ -36,6 +36,7 @@ class Business extends Model{
         $exists = Business::select('*')
             ->where('name','=',$data->get('name'))
             ->exists();
+
         if($exists){
             $res = array(
                 'business_details' => "",
@@ -55,8 +56,6 @@ class Business extends Model{
                 'message'=> 'Business successfully created'
             );
         }
-
-
         return $res;
     }
     public function updateBusinessPrivacy($business_id, $data){

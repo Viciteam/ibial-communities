@@ -12,8 +12,8 @@ class BusinessController extends Controller
         $business_create = $business->createBusiness($request->json());
         $response = array(
             'status' => http_response_code(),
-            "data" => $business['business_details'],
-            'message' => $business['message']
+            "data" => $business_create['business_details'],
+            'message' => $business_create['message']
         );
         return $response;
 
