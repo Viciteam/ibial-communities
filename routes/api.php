@@ -42,3 +42,42 @@ Route::group([
     Route::post("update/business-cover-photo", 'BusinessController@updateBusinessCoverPhoto');
 
 });
+
+
+// update from Arphie
+
+Route::group([
+    'prefix' => 'company',
+], function () {
+    Route::post("add", 'CompanyController@insert'); 
+});
+
+Route::group([
+    'prefix' => 'teams',
+], function () {
+    Route::post("add", 'CompanyController@addTeam'); 
+    Route::post("invite", 'CompanyController@invite'); 
+    Route::post("uninvite", 'CompanyController@uninvite'); 
+
+    Route::get("members", 'CompanyController@members'); 
+});
+
+Route::group([
+    'prefix' => 'kb',
+], function () {
+    Route::post("insert", 'KnowledgeBaseController@insert'); 
+    Route::post("edit", 'KnowledgeBaseController@edit'); 
+    Route::post("deactive", 'KnowledgeBaseController@deactive'); 
+});
+
+Route::group([
+    'prefix' => 'manage',
+], function () {
+    Route::post("/", 'CompanyController@manage'); 
+});
+
+Route::group([
+    'prefix' => 'hashtags',
+], function () {
+    Route::get("suggest", 'CompanyController@suggest');
+});
