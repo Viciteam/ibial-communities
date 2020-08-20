@@ -82,30 +82,77 @@ After Cloning Project:
     - URL: `/api/teams/invite`
     - Method: {+ POST +}
     - Parameters:
+        {
+            "invitee": 1,
+            "team_id": 1,
+            "connection": [
+                {
+                    "user_id": 1,
+                    "position": "Lead Dev"
+                },
+                {
+                    "user_id": 2,
+                    "position": "Developer"
+                }
+            ]
+        }
     - Output: 
 - [x] DisConnect
     - URL: `/api/teams/uninvite`
     - Method: {+ POST +}
     - Parameters:
+        {
+            "users": [4]
+        }
     - Output: 
 - [x] Add Teams Info
     - URL: `/api/teams/add`
     - Method: {+ POST +}
     - Parameters:
+        {
+            "business_id": 1,
+            "name": "Team 1 - front end",
+            "description": "Developlent for team 1",
+            "created_by": 1,
+            "attributes": {
+                "privacy": "open"
+            }
+        }
     - Output: 
 - [x] Roles & permissions
     - URL: `/api/manage/`
     - Method: {+ POST +}
     - Parameters:
+        {
+            "roles": [
+                {
+                    "member_id": 3,
+                    "change_to": "leader"
+                },
+                {
+                    "member_id": 4,
+                    "change_to": "junior"
+                }
+            ],
+            "permissions": [
+                {
+                    "member_id": 4,
+                    "change_to": "editor"
+                }
+            ]
+        }
     - Output: 
 - [x] Members
     - URL: `/api/teams/members`
     - Method: {- GET -}
     - Parameters:
+        {
+            "team": 1,
+            "filter": {
+                "role": "leader",
+                "permission": "editor"
+            }
+        }	
     - Output: 
 
-
-## DB Tables
-
-list of DB tables
 
