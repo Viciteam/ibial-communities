@@ -28,6 +28,8 @@ After Cloning Project:
 ##  Endpoints
 
 - [x] Add Business Info
+    - URL:
+    - Method:
 - [x] Suggested Hashtags
 - [x] Connect
 - [x] DisConnect
