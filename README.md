@@ -34,7 +34,7 @@ After Cloning Project:
     - Output: 
 - [x] Suggested Hashtags
     - URL: `/api/hashtags/suggest`
-    - Method: {+ GET +}
+    - Method: {- GET -}
     - Parameters:
     - Output: 
 - [x] Connect
@@ -59,7 +59,7 @@ After Cloning Project:
     - Output: 
 - [x] Members
     - URL: `/api/teams/members`
-    - Method: {+ GET +}
+    - Method: {- GET -}
     - Parameters:
     - Output: 
 
