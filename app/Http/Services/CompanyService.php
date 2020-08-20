@@ -167,7 +167,11 @@ class CompanyService extends BaseService
     public function suggest(array $data)
     {
         $hashtags = $this->company->getHashtags($data);
-        dump($hashtags);
+        return $this->absorb([
+            'status' => 200,
+            'message' => "suggested hashtags",
+            'data' => $hashtags,
+        ]);
     }
 
 

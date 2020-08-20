@@ -171,30 +171,90 @@ class CompanyRepository extends BaseRepository
 
     public function getHashtags($data)
     {
+        $hashtags = [];
+        
+        // for skills and language
         if(isset($data['skills']) || isset($data['language'])){
             $hashes = $this->getCompanyByDetails($data);
+            foreach ($hashes as $hashkey => $hashvalue) {
+                array_push($hashtags, $hashvalue);
+            }
         }
 
+        // for the attributes
+        if(isset($data['attributes'])){
+            $hashes = $this->getCompanybyAttr($data['attributes']);
+            foreach ($hashes as $hashkey => $hashvalue) {
+                array_push($hashtags, $hashvalue);
+            }
+        }
 
+        $slimhash = array_unique($hashtags);
+
+        // dump($slimhash);
+
+        return $slimhash;
     }
 
     public function getCompanyByDetails($data)
     {
-        dump($data);
+        $hashtags = [];
 
-        $params = [];
+        // init model
+        $business_model = $this->business_model;
 
-        foreach ($data['skills'] as $key => $value) {
-            dump($value);
+        if(isset($data['skills'])){
+            // get skills
+            foreach ($data['skills'] as $key => $value) {
+                $business_model->orWhere("skills", "like", "%".$value."%");
+            }
+        }
+        
+        if(isset($data['language'])){
+            // get language
+            foreach ($data['language'] as $key => $value) {
+                $business_model->orWhere("language", "like", "%".$value."%");
+            }
         }
 
+        $business = $this->returnToArray($business_model->get());
 
-        // $this->business_model->
+        foreach ($business as $bskey => $bsvalue) {
+            $dhash = json_decode($bsvalue['hashtag']);
+            foreach ($dhash as $dhkey => $dhvalue) {
+                array_push($hashtags, $dhvalue);
+            }
+        }
+        
+        return $hashtags;
     }
 
     public function getCompanybyAttr($data)
     {
-        # code...
+        $hashtags = [];
+        
+        // init model
+        $business_model = $this->business_model;
+
+        // as per attribute item
+        foreach ($data as $mainkey => $mainvalue) {
+            // as per item
+            foreach ($mainvalue as $pikey => $pivalue) {
+                $business_model->orWhere("attributes", "like", "%".$pivalue."%");
+            }
+        }
+
+
+        $business = $this->returnToArray($business_model->get());
+
+        foreach ($business as $bskey => $bsvalue) {
+            $dhash = json_decode($bsvalue['hashtag']);
+            foreach ($dhash as $dhkey => $dhvalue) {
+                array_push($hashtags, $dhvalue);
+            }
+        }
+
+        return $hashtags;
     }
     
     
