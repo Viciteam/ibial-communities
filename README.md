@@ -17,21 +17,12 @@ Micro Service for business model and information
 
 After Cloning Project:
 
-```mermaid
-graph TD;
-  git checkout develop-->npm install;
-  npm install-->composer install;
-  composer install-->php artisan migrate;
-  php artisan migrate-->php artisan key:generate;
-  php artisan key:generate-->php artisan passport:keys;
-```
-
-
-
-
-
-
-
+- git checkout develop
+- npm install
+- composer install
+- php artisan migrate
+- php artisan key:generate
+- php artisan passport:keys
 
 ##  Endpoints
 
