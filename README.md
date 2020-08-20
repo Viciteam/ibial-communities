@@ -17,12 +17,12 @@ Micro Service for business model and information
 
 After Cloning Project:
 
-- git checkout develop
-- npm install
-- composer install
-- php artisan migrate
-- php artisan key:generate
-- php artisan passport:keys
+- [x] git checkout develop
+- [x] npm install
+- [x] composer install
+- [x] php artisan migrate
+- [x] php artisan key:generate
+- [x] php artisan passport:keys
 
 
 ##  Endpoints
@@ -31,6 +31,36 @@ After Cloning Project:
     - URL: `/api/company/add`
     - Method: {+ POST +}
     - Parameters:
+        ;;;
+            {
+                "business_id": 1,
+                "name": "Sample Company 1",
+                "logo": "",
+                "description": "this is a sample description",
+                "hashtag": [
+                    "sample2Company",
+                    "GetMorePark"
+                ],
+                "location": "Davao City",
+                "skills": [
+                    "vb.net",
+                    "laravel",
+                    "c++"
+                ],
+                "language": [
+                    "english",
+                    "thai",
+                    "filipino"
+                ],
+                "attributes": {
+                    "interest": [
+                        "development",
+                        "tech",
+                        "sample"
+                    ]
+                }
+            }
+        ;;;
     - Output: 
 - [x] Suggested Hashtags
     - URL: `/api/hashtags/suggest`
