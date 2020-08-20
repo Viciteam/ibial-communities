@@ -31,36 +31,34 @@ After Cloning Project:
     - URL: `/api/company/add`
     - Method: {+ POST +}
     - Parameters:
-        ;;;
-            {
-                "business_id": 1,
-                "name": "Sample Company 1",
-                "logo": "",
-                "description": "this is a sample description",
-                "hashtag": [
-                    "sample2Company",
-                    "GetMorePark"
-                ],
-                "location": "Davao City",
-                "skills": [
-                    "vb.net",
-                    "laravel",
-                    "c++"
-                ],
-                "language": [
-                    "english",
-                    "thai",
-                    "filipino"
-                ],
-                "attributes": {
-                    "interest": [
-                        "development",
-                        "tech",
-                        "sample"
-                    ]
-                }
+        {
+            "business_id": 1,
+            "name": "Sample Company 1",
+            "logo": "",
+            "description": "this is a sample description",
+            "hashtag": [
+                "sample2Company",
+                "GetMorePark"
+            ],
+            "location": "Davao City",
+            "skills": [
+                "vb.net",
+                "laravel",
+                "c++"
+            ],
+            "language": [
+                "english",
+                "thai",
+                "filipino"
+            ],
+            "attributes": {
+                "interest": [
+                    "development",
+                    "tech",
+                    "sample"
+                ]
             }
-        ;;;
+        }
     - Output: 
 - [x] Suggested Hashtags
     - URL: `/api/hashtags/suggest`
