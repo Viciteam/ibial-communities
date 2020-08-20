@@ -64,6 +64,19 @@ After Cloning Project:
     - URL: `/api/hashtags/suggest`
     - Method: {- GET -}
     - Parameters:
+        {
+            "skills": [
+                "laravel",
+                "vb.net"
+            ],
+            "attributes": {
+                "interest": [
+                    "development",
+                    "tech",
+                    "sample"
+                ]
+            }
+        }
     - Output: 
 - [x] Connect
     - URL: `/api/teams/invite`
