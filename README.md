@@ -28,14 +28,40 @@ After Cloning Project:
 ##  Endpoints
 
 - [x] Add Business Info
-    - URL:
-    - Method:
+    - URL: `/api/company/add`
+    - Method: {+ POST +}
+    - Parameters:
+    - Output: 
 - [x] Suggested Hashtags
+    - URL: `/api/hashtags/suggest`
+    - Method: {+ GET +}
+    - Parameters:
+    - Output: 
 - [x] Connect
+    - URL: `/api/teams/invite`
+    - Method: {+ POST +}
+    - Parameters:
+    - Output: 
 - [x] DisConnect
+    - URL: `/api/teams/uninvite`
+    - Method: {+ POST +}
+    - Parameters:
+    - Output: 
 - [x] Add Teams Info
+    - URL: `/api/teams/add`
+    - Method: {+ POST +}
+    - Parameters:
+    - Output: 
 - [x] Roles & permissions
+    - URL: `/api/manage/`
+    - Method: {+ POST +}
+    - Parameters:
+    - Output: 
 - [x] Members
+    - URL: `/api/teams/members`
+    - Method: {+ GET +}
+    - Parameters:
+    - Output: 
 
 
 ## DB Tables
