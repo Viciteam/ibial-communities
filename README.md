@@ -13,7 +13,7 @@
 
 Micro Service for business model and information
 
-## installation process
+## Installation process
 
 After Cloning Project:
 
@@ -24,9 +24,16 @@ After Cloning Project:
 - php artisan key:generate
 - php artisan passport:keys
 
+
 ##  Endpoints
 
-list of endpoints
+- [x] Add Business Info
+- [x] Suggested Hashtags
+- [x] Connect
+- [x] DisConnect
+- [x] Add Teams Info
+- [x] Roles & permissions
+- [x] Members
 
 
 ## DB Tables
