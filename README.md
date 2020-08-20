@@ -59,7 +59,6 @@ After Cloning Project:
                 ]
             }
         }
-    - Output: 
 - [x] Suggested Hashtags
     - URL: `/api/hashtags/suggest`
     - Method: {- GET -}
@@ -77,7 +76,6 @@ After Cloning Project:
                 ]
             }
         }
-    - Output: 
 - [x] Connect
     - URL: `/api/teams/invite`
     - Method: {+ POST +}
@@ -96,7 +94,6 @@ After Cloning Project:
                 }
             ]
         }
-    - Output: 
 - [x] DisConnect
     - URL: `/api/teams/uninvite`
     - Method: {+ POST +}
@@ -104,7 +101,6 @@ After Cloning Project:
         {
             "users": [4]
         }
-    - Output: 
 - [x] Add Teams Info
     - URL: `/api/teams/add`
     - Method: {+ POST +}
@@ -118,7 +114,6 @@ After Cloning Project:
                 "privacy": "open"
             }
         }
-    - Output: 
 - [x] Roles & permissions
     - URL: `/api/manage/`
     - Method: {+ POST +}
@@ -141,7 +136,6 @@ After Cloning Project:
                 }
             ]
         }
-    - Output: 
 - [x] Members
     - URL: `/api/teams/members`
     - Method: {- GET -}
@@ -153,6 +147,5 @@ After Cloning Project:
                 "permission": "editor"
             }
         }	
-    - Output: 
 
 
