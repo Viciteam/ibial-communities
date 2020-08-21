@@ -89,4 +89,71 @@ class BusinessController extends Controller
 
         return $response;
     }
+    public function addBusinessPartner(Request $request){
+        $business_profile = new Business();
+        //Check token here before pushing request
+        //If there is a problem update message response:
+        //$message ="Blah blah blah";
+        $data = array();
+
+        try {
+            $data = $business_profile->addBusinessPartner($request->json());
+            $message = $data['msg'];
+        } catch (Throwable $e) {
+            $message = $e;
+        }
+
+        $response = array(
+            'status' => http_response_code(),
+            "data" => $data['status'],
+            'message' => $message
+        );
+
+        return $response;
+    }
+    public function acceptBusinessPartnerRequest(Request $request){
+        $business_profile = new Business();
+        //Check token here before pushing request
+        //If there is a problem update message response:
+        //$message ="Blah blah blah";
+        $data = array();
+
+        try {
+            $data = $business_profile->acceptBusinessPartnerRequest($request->json());
+            $message = $data['msg'];
+        } catch (Throwable $e) {
+            $message = $e;
+        }
+
+        $response = array(
+            'status' => http_response_code(),
+            "data" => $data['status'],
+            'message' => $message
+        );
+
+        return $response;
+    }
+
+    public function getPartners($id){
+        $business_profile = new Business();
+        //Check token here before pushing request
+        //If there is a problem update message response:
+        //$message ="Blah blah blah";
+        $data = array();
+
+        try {
+            $data = $business_profile->getPartners($id);
+            $message = $data['msg'];
+        } catch (Throwable $e) {
+            $message = $e;
+        }
+
+        $response = array(
+            'status' => http_response_code(),
+            "data" => $data['data'],
+            'message' => $message
+        );
+
+        return $response;
+    }
 }

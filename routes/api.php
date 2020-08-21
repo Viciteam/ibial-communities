@@ -40,5 +40,7 @@ Route::group([
     Route::put("update/{id}/business-profile", 'BusinessController@updateBusinessProfile');
     Route::post("update/business-profile-pic", 'BusinessController@updateBusinessProfilePic');
     Route::post("update/business-cover-photo", 'BusinessController@updateBusinessCoverPhoto');
-
+    Route::post("/add-business-partner", 'BusinessController@addBusinessPartner');
+    Route::post("/accept-bussiness-partner-request", 'BusinessController@acceptBusinessPartnerRequest');
+    Route::get("/get-partners/{id}", 'BusinessController@getPartners');
 });

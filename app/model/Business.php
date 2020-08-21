@@ -3,6 +3,7 @@
 namespace App\model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Business extends Model{
     protected $table = 'business';
@@ -307,5 +308,137 @@ class Business extends Model{
         }
 
 
+    }
+
+    public function addBusinessPartner($data){
+        $response = array();
+        $status = false;
+        $message = "Partnership successfully created. Awaiting confirmation from your business partner";
+        $exists = Business::select('*')
+            ->where('id','=',(int)$data->get('id'))
+            ->exists();
+        if($exists){
+            $partner_exists = Business::select('*')
+                ->where('id','=',(int)$data->get('partner_id'))
+                ->exists();
+            if($partner_exists){
+                $checker = DB::table('business_partnership')
+                    ->select('id')
+                    ->where([
+                        ['business_name', '=', $data->get('business_name')],
+
+                    ])
+                    ->exists();
+
+                if ($checker){
+                    $message = "Business partnership name already exist.";
+                    $status = false;
+                }else{
+                    $add_business_partner = DB::table('business_partnership')->insert([
+                        'business_id' => $data->get('id'),
+                        'business_partner_id' => $data->get('partner_id'),
+                        'business_type' => $data->get('business_type'),
+                        'business_partnership_terms' => $data->get('business_partnership_terms'),
+                        'location' =>  $data->get('location'),
+                        'business_name' => $data->get('business_name'),
+                        'business_tag_line' => $data->get('business_tag_line'),
+                        'status_id' => 1
+                    ]);
+                    $add_business_partner = DB::table('business_partnership')->insert([
+                        'business_id' => $data->get('partner_id'),
+                        'business_partner_id' => $data->get('id'),
+                        'business_type' => $data->get('business_type'),
+                        'business_partnership_terms' => $data->get('business_partnership_terms'),
+                        'location' =>  $data->get('location'),
+                        'business_name' => $data->get('business_name'),
+                        'business_tag_line' => $data->get('business_tag_line'),
+                        'status_id' => 2
+                    ]);
+                    $status = true;
+                }
+            }else{
+                $message = "Friend ID can't be found.";
+                $status = false;
+            }
+        }else{
+            $message = "User ID can't be found.";
+            $status = false;
+        }
+
+        $response = array(
+            'msg' => $message,
+            'status' => $status
+        );
+        return $response;
+
+    }
+    public function acceptBusinessPartnerRequest($data){
+
+        $response = array();
+        $status = false;
+        $message = "Partnership successfully accepted";
+
+
+                $checker = DB::table('business_partnership')
+                    ->select('id')
+                    ->where([
+                        ['business_id', '=', $data->get('id')],
+                        ['business_partner_id', '=', $data->get('partner_id')],
+                        ['status_id', '=', 2]
+                    ])
+                    ->exists();
+
+                if ($checker){
+                    $accept = DB::table('business_partnership')
+                        ->where([
+                            ['business_id', '=', $data->get('id')],
+                            ['business_partner_id', '=', $data->get('partner_id')],
+                            ['status_id', '=', 2]
+                        ])
+                        ->update(['status_id' => 3]);
+                    $update_accept = DB::table('business_partnership')
+                        ->where([
+                            ['business_id', '=', $data->get('partner_id')],
+                            ['business_partner_id', '=', $data->get('id')],
+                            ['status_id', '=', 1]
+                        ])
+                        ->update(['status_id' => 3]);
+                    $status = true;
+                }else{
+
+
+                    $message = "Partnership request not found.";
+                    $status = false;
+
+                }
+
+
+
+        $response = array(
+            'msg' => $message,
+            'status' => $status
+        );
+        return $response;
+
+    }
+
+    public function getPartners($id){
+        $response = array();
+        $status = false;
+        $message = "Success";
+
+
+
+        $partners = DB::table('business_partnership')
+            ->where([
+                ['business_id', '=', $id]
+            ])
+            ->get();
+
+        $response = array(
+            'msg' => $message,
+            'data' => $partners
+        );
+        return $response;
     }
 }
