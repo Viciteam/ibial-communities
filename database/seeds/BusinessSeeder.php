@@ -28,7 +28,7 @@ class BusinessSeeder extends Seeder
                 'cover_photo' => '1_cover_photo.png',
                 'name' => Str::random(10) . ' BIZ',
                 'tag_line' => 'Tag line here - ' . Str::random(10),
-                'tags' => 'SPORTS,ENTERTAINMENT',
+
                 'business_email' => Str::random(10) . 'biz@gmail.com',
                 'created_at' => Date('Y-m-d H:i:s'),
                 'updated_at' => Date('Y-m-d H:i:s'),

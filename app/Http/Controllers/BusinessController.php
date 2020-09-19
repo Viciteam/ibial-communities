@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\model\Business;
+use App\model\BusinessProfileTags;
 use Illuminate\Http\Request;
 
 class BusinessController extends Controller
@@ -20,7 +21,11 @@ class BusinessController extends Controller
     }
     public function getBusinessDetails($id){
         $business = new Business();
+        $tags = new BusinessProfileTags();
         $business_details = $business->getBusinessDetails($id);
+
+        $tag = $tags->getBusinessProfileTags($id);
+        $business_details['business_details']['tags'] = $tag;
         $response = array(
             'status' => http_response_code(),
             "data" => $business_details['business_details'],
